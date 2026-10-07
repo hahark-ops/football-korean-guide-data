@@ -1,0 +1,14 @@
+{
+  "name": "football-korean-guide-data",
+  "private": true,
+  "type": "module",
+  "description": "Data pipeline: nflverse to static JSON on GitHub Pages. Synced from the private app repository.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "collect": "node --experimental-strip-types collector/run.ts",
+    "verify:data": "node --experimental-strip-types collector/verify.ts",
+    "test:collector": "node --experimental-strip-types --test \"tests/collector/**/*.test.ts\""
+  }
+}

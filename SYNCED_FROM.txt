@@ -1,0 +1,51 @@
+# Written by scripts/sync-data-repo.mjs in the private app repository.
+# The files listed below are copies; change them in the app repository and sync again.
+commit: 818d4106b4191973512a5542c7ec7b7d3a1670c7
+working_tree: clean
+synced_at: 2026-10-07T14:41:45.153Z
+files:
+.gitattributes
+.github/workflows/collect.yml
+.github/workflows/live-probe.yml
+.gitignore
+DATA_NOTICE.md
+README.md
+collector/closeness.ts
+collector/concepts.ts
+collector/csv.ts
+collector/explain.ts
+collector/forbidden.ts
+collector/korean.ts
+collector/output.ts
+collector/pbp.ts
+collector/recap.ts
+collector/run.ts
+collector/schedule.ts
+collector/sources.ts
+collector/stadiums.ts
+collector/standings.ts
+collector/teams.ts
+collector/types.ts
+collector/verify.ts
+package.json
+research/live/README.md
+research/live/env.mjs
+research/live/log-scores.mjs
+research/live/summarize-log.mjs
+src/content/glossary.ts
+src/data/publicData.ts
+src/data/teamAssets.ts
+tests/collector/closeness.test.ts
+tests/collector/concepts.test.ts
+tests/collector/csv.test.ts
+tests/collector/explain.test.ts
+tests/collector/fixtures.ts
+tests/collector/korean.test.ts
+tests/collector/pbp.test.ts
+tests/collector/recap.test.ts
+tests/collector/run.test.ts
+tests/collector/schedule.test.ts
+tests/collector/sources.test.ts
+tests/collector/standings.test.ts
+tests/collector/verify.test.ts
+tsconfig.collector.json

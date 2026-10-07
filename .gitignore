@@ -1,0 +1,10 @@
+# Collector output and downloaded raw sources (rebuilt by npm run collect; CI deploys the output to Pages)
+collector/out/
+collector/.cache/
+
+# Raw live-score probe logs: never committed. CI publishes only the change
+# events from research/live/summarize-log.mjs, on the probe-logs branch.
+research/live/logs/
+
+node_modules/
+.env*

@@ -1,0 +1,90 @@
+# nflverse -> static JSON -> GitHub Pages.
+# Synced from the private app repository (pipeline/data-repo/); edit it there, not here.
+name: collect
+
+on:
+  schedule:
+    # Every hour at minute 7 (UTC), off the top of the hour where GitHub delays schedules most.
+    - cron: '7 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'collector/**'
+      - 'src/**'
+      - 'tests/collector/**'
+      - '.github/workflows/collect.yml'
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The previous output keeps updated_at stable for unchanged records and
+      # carries measured closeness forward; the raw-source cache is what
+      # verify re-reads, so both travel together between runs.
+      - name: Restore previous output and raw-source cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            collector/.cache
+            collector/out
+          key: collect-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            collect-
+
+      - name: Collector tests
+        run: node --experimental-strip-types --test "tests/collector/**/*.test.ts"
+
+      - name: Collect
+        run: node --experimental-strip-types collector/run.ts
+
+      - name: Verify against the raw sources
+        run: node --experimental-strip-types collector/verify.ts
+
+      # Reached only when tests, collect and verify passed, so a failed run
+      # never becomes the baseline for the next one.
+      - name: Save output and raw-source cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            collector/.cache
+            collector/out
+          key: collect-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Serve files as-is
+        run: touch collector/out/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: collector/out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
