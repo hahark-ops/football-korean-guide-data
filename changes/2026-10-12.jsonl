@@ -17,3 +17,5 @@
 {"game":"BAL@ATL","kickoff":"2026-10-12T00:20:00.000Z","seenAt":"2026-10-12T03:19:08.093Z","prevPollAt":"2026-10-12T03:18:47.884Z","awayPts":2}
 {"game":"BAL@ATL","kickoff":"2026-10-12T00:20:00.000Z","seenAt":"2026-10-12T03:43:37.083Z","prevPollAt":"2026-10-12T03:43:16.891Z","awayPts":7}
 {"game":"BAL@ATL","kickoff":"2026-10-12T00:20:00.000Z","seenAt":"2026-10-12T03:49:19.383Z","prevPollAt":"2026-10-12T03:48:58.957Z","state":"final"}
+{"run":{"firstPollAt":"2026-10-12T03:59:33.209Z","pollingFrom":"2026-10-12T03:59:33.510Z","lastPollAt":"2026-10-12T04:09:36.419Z","stoppedAt":"2026-10-12T04:09:36.631Z","reason":"all games final","polls":32,"okPolls":32,"failedPolls":0,"rateLimited":0,"maxGapSeconds":20}}
+{"game":"BAL@ATL","kickoff":"2026-10-12T00:20:00.000Z","firstSeenAt":"2026-10-12T03:59:33.505Z","state":"final","scoreAtFirstSeen":[30,23]}
