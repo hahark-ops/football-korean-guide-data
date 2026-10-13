@@ -1,0 +1,3 @@
+{"run":{"firstPollAt":"2026-10-13T03:44:49.258Z","pollingFrom":"2026-10-13T03:44:49.810Z","lastPollAt":"2026-10-13T03:58:17.100Z","stoppedAt":"2026-10-13T03:58:17.231Z","reason":"all games final","polls":42,"okPolls":42,"failedPolls":0,"rateLimited":0,"maxGapSeconds":21}}
+{"game":"BUF@LAR","kickoff":"2026-10-13T00:15:00.000Z","firstSeenAt":"2026-10-13T03:44:49.808Z","state":"in_progress","scoreAtFirstSeen":[34,34]}
+{"game":"BUF@LAR","kickoff":"2026-10-13T00:15:00.000Z","seenAt":"2026-10-13T03:48:11.734Z","prevPollAt":"2026-10-13T03:47:51.366Z","state":"final","awayPts":3}
